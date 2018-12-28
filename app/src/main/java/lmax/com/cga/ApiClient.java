@@ -40,7 +40,8 @@ public class ApiClient {
         Call<ListRepoData> getRepos(
                 @Query("q") String q,
                 @Query("sort") String sort,
-                @Query("order") String order
+                @Query("order") String order,
+                @Query( "page" ) int page
         );
     }
 }
