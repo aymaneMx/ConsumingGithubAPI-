@@ -1,5 +1,8 @@
 package lmax.com.cga;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Map;
 import java.util.NavigableMap;
 import java.util.TreeMap;
@@ -30,6 +33,14 @@ public class Outils {
         long truncated = value / (divideBy / 10); //the number part of the output times 10
         boolean hasDecimal = truncated < 100 && (truncated / 10d) != (truncated / 10);
         return hasDecimal ? (truncated / 10d) + suffix : (truncated / 10) + suffix;
+    }
+
+    public static String getDateMinusDays(int days){
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, - days);
+        Date dateBefore30Days = cal.getTime();
+        return new SimpleDateFormat("yyyy-MM-dd").format(dateBefore30Days);
+
     }
 
 }

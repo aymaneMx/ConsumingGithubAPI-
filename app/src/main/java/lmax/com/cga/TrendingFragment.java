@@ -19,6 +19,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static lmax.com.cga.Outils.getDateMinusDays;
+
 
 public class TrendingFragment extends Fragment {
 
@@ -72,7 +74,7 @@ public class TrendingFragment extends Fragment {
             mProgressBar.setVisibility(View.VISIBLE);
 
             ApiClient.GetDataService service = ApiClient.getRetrofitInstance().create(ApiClient.GetDataService.class);
-            Call<ListRepoData> call = service.getRepos( "created:>2017-10-22", "stars", "desc" , pageNumber );
+            Call<ListRepoData> call = service.getRepos( "created:>" + getDateMinusDays(30) , "stars", "desc" , pageNumber );
 
             call.enqueue(new Callback<ListRepoData>() {
                 @Override
